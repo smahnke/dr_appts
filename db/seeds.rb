@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+5.times do
+  user = User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
+  )
+end
+5.times do
+  doctor = Doctor.create(
+    dr_name: Faker::Name.name,
+    specialty: Faker::Movies::StarWars.specie
+  )
+end
+5.times do |u, i|
+  appt = Appt.create(
+    date: Faker::Date.backward(days: 365),
+    time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :long),
+    reason: Faker::Quotes::Shakespeare.king_richard_iii_quote,
+    user_id: u,
+    doctor_id: i
+  )
+end
+puts 'Data Seeded'
