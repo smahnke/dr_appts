@@ -57,6 +57,6 @@ class ApptsController < ApplicationController
     end
 
     def appt_params
-      params.requre(:appt).permit(:date, :time, :reason, :user_id)
+      params.requre(:appt).permit(:appt_date, :appt_time, :reason, :user_id)
     end
 end
