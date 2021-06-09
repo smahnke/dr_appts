@@ -1,13 +1,13 @@
 import React from 'react';
 
-const User = ({ user, courses, fullName }) => {
+const User = ({ user, doctors, fullName }) => {
   const { id } = user
   return(
     <>
       <h1>{fullName}</h1>
       <hr />
       <h5>Doctors</h5>
-      <h6>{ doctors.length <= 0 ? "No Doctors" : "" }</h6>
+      {/* <h6>{ doctors.length <= 0 ? "No Doctors" : "" }</h6> */}
       <ul>
         {
           doctors.map( (doctor) => (
