@@ -44,6 +44,11 @@ const Navbar=() => (
           <li class="nav-item">
             <a class="nav-link" href="/doctors/new">New Doctor</a>
           </li>
+          <li>
+            <a href="/users/sign_out" data-method="delete">
+              Logout
+            </a>
+          </li>
         </ul>
       </div>
       </div>
