@@ -1,18 +1,18 @@
 import React from 'react';
 
-const User = ({ user, doctors, fullName }) => {
+const User = ({ user, appts, fullName }) => {
   const { id } = user
   return(
     <>
       <h1>{fullName}</h1>
       <hr />
-      <h5>Doctors</h5>
-      {/* <h6>{ doctors.length <= 0 ? "No Doctors" : "" }</h6> */}
-      <ul>
+      <h5>Appointments</h5>
+      <h6>{ appts.length <= 0 ? "(No Appointments)" : "" }</h6>
+       <ul>
         {
-          doctors.map( (doctor) => (
+          appts.map( (appt) => (
             <li>
-              <a href={`/doctors/${doctor.id}`}>{doctor.dr_name}</a>
+              <a href={`/appts/${appt.id}`}>{appt.appt_date}</a>
             </li>
           ))
         }
