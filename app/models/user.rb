@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  
   has_many :appts, dependent: :destroy
   has_many :doctors, through: :appts
 
