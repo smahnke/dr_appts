@@ -1,6 +1,6 @@
 class ApptsController < ApplicationController
   before_action :set_doctor
-  before_action :set_user
+  # before_action :set_user
   before_action :set_appt, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -49,13 +49,13 @@ class ApptsController < ApplicationController
       @doctor = Doctor.find(params[:doctor_id])
     end
 
-    def set_user
-      @user = User.find(params[:doctor_id])
-    end
+    # def set_user
+    #   @user = User.find(params[:user_id])
+    # end
 
-    def set_appt
-      @appt = Appt.find(params[:id])
-    end
+    # def set_appt
+    #   @appt = Appt.find(params[:id])
+    # end
 
     def appt_params
       params.require(:appt).permit(:appt_date, :appt_time, :reason, :user_id)
