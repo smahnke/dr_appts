@@ -24,6 +24,7 @@ class DoctorsController < ApplicationController
       redirect_to @doctor
     else
       render component: 'CourseNew', props: {doctor: @doctor}
+    end
   end
 
   def update
@@ -31,17 +32,19 @@ class DoctorsController < ApplicationController
       redirect_to @doctor
     else
       render component: 'CourseEdit', props: {doctor: @doctor}
+    end
   end
 
   def destroy
     @doctor.destroy
     redirect_to root_path
   end
-  
+
   private
     def set_doctor
       @doctor = Doctor.find(params[:id])
     end
     def doctor_params
       params.require(:doctor).permit(:dr_name, :specialty)
+    end
 end
