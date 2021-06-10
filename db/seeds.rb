@@ -20,7 +20,7 @@ end
 5.times do |u, i|
   appt = Appt.create(
     appt_date: Faker::Date.backward(days: 365),
-    time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :long),
+    appt_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :long),
     reason: Faker::Quotes::Shakespeare.king_richard_iii_quote,
     user_id: u,
     doctor_id: i
