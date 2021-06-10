@@ -10,7 +10,7 @@ const User = ({ user, doctors, fullName }) => {
       <h6>{ doctors.length <= 0 ? "(No Doctors)" : "" }</h6>
        <ul>
         {
-          appts.map( (appt) => (
+          doctors.map( (doctor) => (
             <li>
               <a href={`/doctors/${id}`}>{doctor.dr_name}</a>
             </li>
