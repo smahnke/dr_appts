@@ -13,8 +13,9 @@ class ApptsController < ApplicationController
   end
 
   def new
-    @appt = current_user.appts.new
-    render component: 'ApptNew', props: {appt: @appt, }
+    @user = User.all - @doctor.users
+    @appt = @doctor.appts.new
+    render component: 'ApptNew', props: { doctor: @doctor, appt: @appt, user: @user}
   end
 
   def edit

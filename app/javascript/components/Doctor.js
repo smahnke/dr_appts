@@ -7,6 +7,10 @@ const Doctor = ({ doctor }) => {
       <h1>{dr_name}</h1>
       <hr/>
       <a href={`/doctors/${id}/appts`}>Appointments</a>
+      <br />
+        <a href={`/doctors/${id}`} data-method="delete">
+          Delete Doctor
+        </a>
     </>
   )
 }
