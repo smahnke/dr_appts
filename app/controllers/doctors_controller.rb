@@ -21,7 +21,7 @@ class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(doctor_params)
     if @doctor.save
-      redirect_to @doctor
+      redirect_to root_path
     else
       render component: 'CourseNew', props: {doctor: @doctor}
     end
@@ -29,7 +29,7 @@ class DoctorsController < ApplicationController
 
   def update
     if @doctor.update(doctor_params)
-      redirect_to @doctor
+      redirect_to root_path
     else
       render component: 'CourseEdit', props: {doctor: @doctor}
     end
