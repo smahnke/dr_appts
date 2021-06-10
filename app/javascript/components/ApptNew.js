@@ -11,8 +11,8 @@ const ApptNew = ({ doctor, appt, users }) => {
       <h1>Add Appointment</h1>
       { errors && errors }
       <form action={`/doctors/${doctor.id}/appts`} method="post">
-        <label for="user_id">Choose a user_id:</label>
-        <select name="enrollment[user_id]" id="user_id" defaultValue={defaultUser}>
+        <label for="user_id">Patient:</label>
+        <select name="appt[user_id]" id="user_id" defaultValue={defaultUser}>
           { users.map( (u) => (
             <option value={u.id}>{`${u.first_name} ${u.last_name}`}</option>
           ))}

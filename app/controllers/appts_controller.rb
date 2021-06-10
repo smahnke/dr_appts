@@ -24,10 +24,11 @@ class ApptsController < ApplicationController
 
   def create
     @appt = @doctor.appts.new(appt_params)
+    @users = User.all - @doctor.users
     if @appt.save
       redirect_to doctor_appts_path(@doctor)
     else
-      render component: 'ApptNew', props: { doctor: @doctor, appt: @appt, user: @users}
+      render component: 'ApptNew', props: { doctor: @doctor, appt: @appt, users: @users}
     end
   end
 
