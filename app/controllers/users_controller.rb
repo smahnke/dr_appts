@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index
     @users = User.all
     render component: 'Users', props: { users: @users}
   end
 
   def show
-    @user = User.find(params[:id])
-    render component: 'User', props: {user:@user, appts: @user.appts, fullName: @user.full_name }
+    render component: 'User', props: {user:@user, doctors: @user.doctors, fullName: @user.full_name }
   end
 
   def new
@@ -24,12 +24,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     render component: 'UserEdit', props: {user: @user}
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user
     else
@@ -38,7 +36,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user - User.find(params[:id])
     @user.destroy
     redirect_to users_path
   end
@@ -46,5 +43,8 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name)
+    end
+    def set_user
+      @user = User.find(params[:id])
     end
 end
