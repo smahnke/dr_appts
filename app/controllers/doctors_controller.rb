@@ -39,7 +39,7 @@ class DoctorsController < ApplicationController
     @doctor.destroy
     redirect_to root_path
   end
-  
+
   private
     def set_doctor
       @doctor = Doctor.find(params[:id])
