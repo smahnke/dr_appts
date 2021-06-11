@@ -62,6 +62,7 @@ class ApptsController < ApplicationController
   #     params.require(:appt).permit(:appt_date, :appt_time, :reason, :doctor_id, :user_id)
   #   end
   before_action :set_doctor
+  before_action :set_appt, only: [:show, :edit, :update, :destroy]
   def index
     @drs = @doctor.appts.where(role: 'doctor')
     @patients = @doctor.appts.where(role: 'patient')
@@ -79,7 +80,8 @@ class ApptsController < ApplicationController
   end
 
   def edit
-    render component: 'ApptEdit', props: { doctor: @doctor, appt: @appt}
+    @users = User.all - @doctor.users
+    render component: 'ApptEdit', props: { doctor: @doctor, appt: @appt, users: @users}
   end
 
   def create
@@ -93,10 +95,11 @@ class ApptsController < ApplicationController
   end
   
   def update
-    if @appt.update(params[:id])
+    @users = User.all - @doctor.users
+    if @appt.update(appt_params)
       redirect_to root_path
     else
-      render component: 'ApptEdit', props: { appt: @appt}
+      render component: 'ApptEdit', props: { doctor: @doctor, appt: @appt, users: @users}
     end
   end
 
@@ -106,6 +109,9 @@ class ApptsController < ApplicationController
   end
 
   private
+    def set_appt
+        @appt = Appt.find(params[:id])
+    end
     def set_doctor
       @doctor = Doctor.find(params[:doctor_id])
     end

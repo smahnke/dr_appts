@@ -20,7 +20,7 @@ import React from 'react';
 //     </>
 //   )
 // }
-const Appts = ({ appts, doctor, drs, patients, users }) => {
+const Appts = ({ doctor, drs, patients, users }) => {
   const displayUser = (id) => {
     let fullName 
     users.map( (u) => {
@@ -35,18 +35,13 @@ const Appts = ({ appts, doctor, drs, patients, users }) => {
       <h1>{doctor.dr_name}'s Appointments</h1>
       <a href={`/doctors/${doctor.id}/appts/new`}>Add Appointment</a>
       <br />
-      {/* {
-        appts.map( (appt) => (
-          <div>
-            <a href={`/doctors/${doctor.id}/appts`}>{appt.first_name} {appt.last_name}'s Appointment</a>
-          </div>
-        ))
-      } */}
       <h2>Doctors</h2>
       { drs.map( (d) => (
         <div>
           <p>{displayUser(d.user_id)}</p>
-          <a href={`/doctors/${doctor.id}/appts/${d.id}`} data-method='delete'>Delete</a>
+          <a href={`/doctors/${doctor.id}/appts/${d.user_id}/edit`}>Edit Appointment</a>
+          <br/>
+          <a href={`/doctors/${doctor.id}/appts/${d.id}`} data-method='delete'>Delete Appointment</a>
         </div>
       ))}
       <h2>Patients</h2>
