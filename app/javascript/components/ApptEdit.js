@@ -1,29 +1,29 @@
 import React from 'react';
 
-const ApptEdit = ({appt}) => {
-  const {first_name, last_name, reason, id} = appt
-  const defaultFirstName = first_name ? first_name : "";
-  const defaultLastName = last_name ? last_name : "";
+const ApptEdit = ({appt, users, doctor}) => {
+  const {appt_date, appt_time, reason, id} = appt
+  const defaultApptDate = appt_date ? appt_date : "";
+  const defaultApptTime = appt_time ? appt_time : "";
   const defaultReason = reason ? reason : "";
   return(
     <>
-      <h1>Editing {first_name} {last_name}'s Appointment</h1>
-      <form action={`/doctors/${id}/appts/${id}/edit`} method="post">
+      <h1>Editing {doctor.dr_name} 's Appointment</h1>
+      <form action={`/doctors/${id}/appts/${id}`} method="post">
         <input type='hidden' name="_method" value="patch"/>
         <input
-          placeholder="Patients First Name"
+          placeholder="Patient's Appointment Date"
           type="text"
           required
-          defaultValue={defaultFirstName}
-          name="appt[first_name]"
+          defaultValue={defaultApptDate}
+          name="appt[appt_date]"
         />
         <input type='hidden' name="_method" value="patch"/>
         <input
-          placeholder="Patient's Last Name"
+          placeholder="Patient's Appointment Time"
           type="text"
           required
-          defaultValue={defaultLastName}
-          name="appt[last_name]"
+          defaultValue={defaultApptTime}
+          name="appt[appt_time]"
         />
         <input type='hidden' name="_method" value="patch"/>
         <input
