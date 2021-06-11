@@ -79,7 +79,7 @@ class ApptsController < ApplicationController
   end
 
   def edit
-    render component: 'ApptEdit', props: { appt: @appt}
+    render component: 'ApptEdit', props: { doctor: @doctor, appt: @appt}
   end
 
   def create
@@ -91,7 +91,7 @@ class ApptsController < ApplicationController
       render component: 'ApptNew', props: { doctor: @doctor, appt: @appt, users: @users}
     end
   end
-
+  
   def update
     if @appt.update(params[:id])
       redirect_to root_path
@@ -110,7 +110,7 @@ class ApptsController < ApplicationController
       @doctor = Doctor.find(params[:doctor_id])
     end
     def appt_params
-      params.require(:appt).permit(:appt_date, :appt_time, :reason, :role, :user_id)
+      params.require(:appt).permit(:appt_date, :appt_time, :reason, :role, :doctor, :user_id)
     end
 end
 

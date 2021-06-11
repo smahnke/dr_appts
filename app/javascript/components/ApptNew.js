@@ -56,36 +56,36 @@ const ApptNew = ({ doctor, appt, users }) => {
       { errors && errors }
       <form action={`/doctors/${doctor.id}/appts`} method="post">
         <label for="role">Choose a role:</label>
-        <select name="appointment[role]" id="role" defaultValue={defaultRole}>
+        <select name="appt[role]" id="role" defaultValue={defaultRole}>
           <option value="doctor">Doctor</option>
           <option value="patient">Patient</option>
         </select>
         <label for="user_id">Choose a Patient:</label>
-        <select name="appointment[user_id]" id="user_id" defaultValue={defaultUser}>
+        <select name="appt[user_id]" id="user_id" defaultValue={defaultUser}>
           { users.map( (u) => (
             <option value={u.id}>{`${u.first_name} ${u.last_name}`}</option>
           ))}
         </select>
         <input
-          type='text'
+          type='number'
           required
           placeholder="Appointment Date"
           defaultValue={defaultApptDate}
-          name="doctor[appt_date]"
+          name="appt[appt_date]"
         />
         <input
-          type='text'
+          type='number'
           required
           placeholder="Appointment Time"
           defaultValue={defaultApptTime}
-          name="doctor[appt_time]"
+          name="appt[appt_time]"
         />
         <input
           type='text'
           required
           placeholder="Reason for visit"
           defaultValue={defaultReason}
-          name="doctor[reason]"
+          name="appt[reason]"
         />
         <button type='submit'>Submit</button>
       </form>

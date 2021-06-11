@@ -8,7 +8,7 @@ const Doctor = ({ doctor }) => {
       <hr/>
       <a href={`/doctors/${id}/appts`}>Appointments</a>
       <br />
-      <a href={`/doctors/${id}/appts/${id}edit`}>Edit Appointment</a>
+      <a href={`/doctors/${id}/appts/${id}/edit`}>Edit Appointment</a>
       <br />
       <a href={`/doctors/${id}/edit`}>Edit Doctor</a>
       <br />

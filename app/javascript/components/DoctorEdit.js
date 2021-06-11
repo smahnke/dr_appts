@@ -14,7 +14,7 @@ const DoctorEdit = ({doctor}) => {
           type="text"
           required
           defaultValue={defaultDrName}
-          name="Dr.[dr_name]"
+          name="doctor[dr_name]"
         />
         <input type='hidden' name="_method" value="patch"/>
         <input
@@ -22,7 +22,7 @@ const DoctorEdit = ({doctor}) => {
           type="text"
           required
           defaultValue={defaultSpecialty}
-          name="Dr.[dr_name],[specialty]"
+          name="doctor[specialty]"
         />
         <button type='submit'>Update</button>
       </form>

@@ -14,7 +14,7 @@ const UserEdit = ({user}) => {
           type="text"
           required
           defaultValue={defaultFirstName}
-          name="[first_name]"
+          name="user[first_name]"
         />
         <input type='hidden' name="_method" value="patch"/>
         <input
@@ -22,7 +22,7 @@ const UserEdit = ({user}) => {
           type="text"
           required
           defaultValue={defaultLastName}
-          name="[last_name]"
+          name="user[last_name]"
         />
         <button type='submit'>Update</button>
       </form>
